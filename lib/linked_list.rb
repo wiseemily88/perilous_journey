@@ -5,41 +5,43 @@ class LinkedList
 attr_accessor :head, :count
 
   def initialize
-  @head = nil
-  @count = 0
+    @head = nil
+    @count = 0
   end
 
 
   def append (surname)
-  current_node = @head
+    current_node = @head # can just use @head and not current_node and move into loop
     if @head == nil
       @head = Node.new(surname)
     else
+      #iterate_over_list(current_node)- make method
+
       until current_node.nextnode == nil
         current_node = current_node.nextnode
       end
       current_node.nextnode = Node.new(surname)
     end
-    @count += 1
+    @count += 1 # pull this out and make a new method
   end
 
   def prepend(surname)
-  temp = @head
-  new_node = Node.new(surname)
-  new_node.nextnode = temp
-  @head = new_node
-  @count += 1
+    #temp = @head
+    new_node = Node.new(surname)
+    new_node.nextnode = @head
+    @head = new_node
+    @count += 1 #pull out
   end
 
   def insert (index, surname)
     current_node = @head
-    temp = current_node.nextnode
+
     (index - 1).times do
       current_node = current_node.nextnode
     end
 
     new_node = Node.new(surname)
-    new_node.nextnode = temp
+    new_node.nextnode = current_node.nextnode
     current_node.nextnode = new_node
     @count += 1
   end
@@ -94,20 +96,16 @@ attr_accessor :head, :count
     include_method_answer
   end
 
-  def pop
-  current_node = @head
-  nextnode = nil
-  pop_message = ""
+  def pop(current_node = @head)
+    until current_node.nextnode == nil
+      current_node = current_node.nextnode
+    end
+      tail = current_node.surname
+      current_node = nil
+      "The #{tail} family has died of dysentery"
+  end
 
-  until current_node.nextnode == nil
-  if current_node.nextnode == nil
-    nextnode.nextnode = current_node.nextnode
-  else
-    current_node = nextnode
-  end
-  current_node = current_node.nextnode
 
-  end
-  pop_message = "The #{current_node.surname} has died of dysentery"
-  end
+
+
 end

@@ -1,12 +1,10 @@
 require 'pry'
 class Node
 
-attr_reader :surname
-attr_accessor :nextnode
+attr_accessor :nextnode, :surname
 
-
-  def initialize(surname)
+  def initialize(surname, nextnode = nil)
     @surname = surname
-    @nextnode = nil
+    @nextnode = nextnode
   end
 end

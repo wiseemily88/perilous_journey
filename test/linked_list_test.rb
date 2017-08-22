@@ -62,10 +62,23 @@ class LinkedListTest < Minitest::Test
     list.append("Henderson")
     list.prepend("Mckinney")
 
+
     assert_equal "Brookes", list.head.nextnode.surname
 
   end
 
+  def test_the_prepend_method_has_a_new_head
+
+    list = LinkedList.new
+
+    list.append("Brookes")
+    list.append("Henderson")
+    list.prepend("Mckinney")
+
+
+    assert_equal "Mckinney", list.head.surname
+
+  end
   def test_the_insert_method
 
     list = LinkedList.new
@@ -74,7 +87,7 @@ class LinkedListTest < Minitest::Test
     list.append("Henderson")
     list.prepend("Mckinney")
     list.insert(2, "Lawson")
-
+#check that lawson is here
     assert_equal "Brookes", list.head.nextnode.surname
 
   end
@@ -135,7 +148,7 @@ class LinkedListTest < Minitest::Test
 
   end
 
-  def test_the_pop_method
+  def test_the_pop_method_removes_last_value
 
     list = LinkedList.new
 
@@ -146,7 +159,7 @@ class LinkedListTest < Minitest::Test
     list.pop
 
 
-    assert_equal false, list.include?("Henderson")
+    assert_equal "The Henderson family has died of dysentery", list.pop
 
   end
 
