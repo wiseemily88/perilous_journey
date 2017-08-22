@@ -6,8 +6,6 @@ require './lib/linked_list'
 
 
 class LinkedListTest < Minitest::Test
-  # test it has the method append- multiple node
-  # test it has the method to_string
 
   def test_link_list_exists
     list = LinkedList.new
@@ -183,4 +181,20 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "The Mckinney family, followed by Lawson family, followed by Brookes family, followed by Henderson family", list.node_to_string
   end
+
 end
+> require "./lib/wagon_train"
+> wt = WagonTrain.new
+=> <WagonTrain list=<LinkedList head=nil #234567890890> #456789045678>
+> wt.list
+=> <LinkedList head=nil #234567890890>
+> wt.list.head
+=> nil
+> wt.append("Burke")
+=> <Node surname="Burke" next_node=nil #5678904567890>
+> wt.list.head.surname
+=> "Burke"
+> wt.append("West")
+=> <Node surname="West" next_node=nil #5678904567890>
+> wt.count
+2

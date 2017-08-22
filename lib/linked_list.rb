@@ -104,8 +104,4 @@ attr_accessor :head, :count
       current_node = nil
       "The #{tail} family has died of dysentery"
   end
-
-
-
-
 end
