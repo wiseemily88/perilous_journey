@@ -36,4 +36,43 @@ class WagonTrainTest < Minitest::Test
     assert_equal 2, wt.count
   end
 
+  def test_append_method_adds_supplies
+    wt = WagonTrain.new
+    wt.append("Burke", ["pounds of food" => 200])
+    assert_equal ["pounds of food" => 200], wt.list.head.supplies
+  end
+
+  def test_prepend_method_adds_node_before_head_with_supplies
+    wt = WagonTrain.new
+    wt.append("Burke", ["pounds of food" => 200])
+    wt.prepend("Hardy", ["spare wagon tongues" => 3])
+    assert_equal "Hardy", wt.list.head.surname
+  end
+
+  def test_insert_method_adds_node_before_head
+    wt = WagonTrain.new
+    wt.append("Burke", ["pounds of food" => 200])
+    wt.prepend("Hardy", ["spare wagon tongues" => 3])
+    wt.insert(1, "West", ["pounds of food" => 300])
+    assert_equal "West", wt.list.head.surname
+  end
+
+  def test_count_method_takes_three
+    skip
+    wt = WagonTrain.new
+    wt.append("Burke", ["pounds of food" => 200])
+    wt.prepend("Hardy", ["spare wagon tongues" => 3])
+    wt.insert(1, "West", ["pounds of food" => 300])
+    assert_equal 3, wt.count
+  end
+
+  def test_supplies_method_returns_hash
+    skip
+    wt = WagonTrain.new
+    wt.append("Burke", ["pounds of food" => 200])
+    wt.prepend("Hardy", ["spare wagon tongues" => 3])
+    wt.insert(1, "West", ["pounds of food" => 300])
+    assert_equal ["spare wagon tongues" => 3, "pounds of food" => 500], wt.supplies
+  end
+
 end

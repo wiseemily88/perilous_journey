@@ -75,8 +75,8 @@ class LinkedListTest < Minitest::Test
 
 
     assert_equal "Mckinney", list.head.surname
-
   end
+
   def test_the_insert_method
 
     list = LinkedList.new
@@ -84,9 +84,9 @@ class LinkedListTest < Minitest::Test
     list.append("Brookes")
     list.append("Henderson")
     list.prepend("Mckinney")
-    list.insert(2, "Lawson")
-#check that lawson is here
-    assert_equal "Brookes", list.head.nextnode.surname
+    list.insert(1, "Lawson")
+
+    assert_equal "Lawson", list.head.nextnode.surname
 
   end
 
@@ -162,7 +162,7 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_the_count_method_counts_nodes
-    skip
+
     list = LinkedList.new
     list.append("Brookes")
     list.append("Henderson")
@@ -183,18 +183,3 @@ class LinkedListTest < Minitest::Test
   end
 
 end
-> require "./lib/wagon_train"
-> wt = WagonTrain.new
-=> <WagonTrain list=<LinkedList head=nil #234567890890> #456789045678>
-> wt.list
-=> <LinkedList head=nil #234567890890>
-> wt.list.head
-=> nil
-> wt.append("Burke")
-=> <Node surname="Burke" next_node=nil #5678904567890>
-> wt.list.head.surname
-=> "Burke"
-> wt.append("West")
-=> <Node surname="West" next_node=nil #5678904567890>
-> wt.count
-2

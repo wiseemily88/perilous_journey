@@ -9,38 +9,46 @@ attr_accessor :head, :count
     @count = 0
   end
 
+  def iterate_over_list(surname, supplies)
+    until @head.nextnode == nil
+      @head = @head.nextnode
+    end
+      @head.nextnode = Node.new(surname, supplies)
+  end
 
-  def append (surname)
+  def append (surname, supplies = {})
     current_node = @head # can just use @head and not current_node and move into loop
     if @head == nil
-      @head = Node.new(surname)
+      @head = Node.new(surname, supplies)
     else
+      iterate_over_list(surname, supplies)
+
       #iterate_over_list(current_node)- make method
 
-      until current_node.nextnode == nil
-        current_node = current_node.nextnode
-      end
-      current_node.nextnode = Node.new(surname)
+      # until current_node.nextnode == nil
+      #   current_node = current_node.nextnode
+      # end
+      # current_node.nextnode = Node.new(surname)
     end
     @count += 1 # pull this out and make a new method
   end
 
-  def prepend(surname)
+  def prepend(surname, supplies = {})
     #temp = @head
-    new_node = Node.new(surname)
+    new_node = Node.new(surname, supplies)
     new_node.nextnode = @head
     @head = new_node
     @count += 1 #pull out
   end
 
-  def insert (index, surname)
+  def insert (index, surname, supplies = {})
     current_node = @head
 
-    (index - 1).times do
+    (index - 1 ).times do
       current_node = current_node.nextnode
     end
 
-    new_node = Node.new(surname)
+    new_node = Node.new(surname, supplies)
     new_node.nextnode = current_node.nextnode
     current_node.nextnode = new_node
     @count += 1

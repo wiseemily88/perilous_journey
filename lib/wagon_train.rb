@@ -9,8 +9,16 @@ attr_reader :list
     @list = LinkedList.new
   end
 
-  def append(surname)
-    @list.append(surname)
+  def append(surname, supplies = {})
+    @list.append(surname, supplies)
+  end
+
+  def prepend(surname, supplies = {})
+    @list.prepend(surname, supplies)
+  end
+
+  def insert(index, surname, supplies = {})
+    @list.insert(index, surname, supplies)
   end
 
   def count
