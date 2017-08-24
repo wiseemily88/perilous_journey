@@ -1,4 +1,4 @@
-require 'pry'
+
 require './lib/node'
 require './lib/linked_list'
 
@@ -26,7 +26,6 @@ attr_reader :list
   end
 
   def supplies
-
     supplies_hash = Hash.new(0)
     current_node = @list.head
     until current_node == nil
