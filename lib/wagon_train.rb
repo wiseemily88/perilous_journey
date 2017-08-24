@@ -25,4 +25,15 @@ attr_reader :list
     @list.count
   end
 
+  def supplies
+
+    supplies_hash = Hash.new(0)
+    current_node = @list.head
+    until current_node == nil
+      supplies_hash.merge!(current_node.supplies){|key, oldval, newval|  newval + oldval }
+      current_node = current_node.nextnode
+    end
+    supplies_hash
+  end
+
 end
