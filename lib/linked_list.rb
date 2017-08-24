@@ -16,29 +16,27 @@ attr_accessor :head, :count
       @head.nextnode = Node.new(surname, supplies)
   end
 
+  def count
+    until @head.nextnode == nil
+      @head = @head.nextnode
+      @count += 1
+    end
+      @count += 1
+
+  end
+
   def append (surname, supplies = {})
-    current_node = @head # can just use @head and not current_node and move into loop
     if @head == nil
       @head = Node.new(surname, supplies)
     else
       iterate_over_list(surname, supplies)
-
-      #iterate_over_list(current_node)- make method
-
-      # until current_node.nextnode == nil
-      #   current_node = current_node.nextnode
-      # end
-      # current_node.nextnode = Node.new(surname)
     end
-    @count += 1 # pull this out and make a new method
   end
 
   def prepend(surname, supplies = {})
-    #temp = @head
     new_node = Node.new(surname, supplies)
     new_node.nextnode = @head
     @head = new_node
-    @count += 1 #pull out
   end
 
   def insert (index, surname, supplies = {})
@@ -51,7 +49,6 @@ attr_accessor :head, :count
     new_node = Node.new(surname, supplies)
     new_node.nextnode = current_node.nextnode
     current_node.nextnode = new_node
-    @count += 1
   end
 
   def node_to_string
@@ -59,7 +56,7 @@ attr_accessor :head, :count
   additional_nodes = ""
     if @head == nil
     else
-      additional_nodes = "The #{@head.surname} family"
+      additional_nodes = "The #{@head.surname} family" #create method here
       until current_node.nextnode == nil
         current_node = current_node.nextnode
         additional_nodes += ", followed by #{current_node.surname} family"
@@ -77,7 +74,7 @@ attr_accessor :head, :count
       current_node = current_node.nextnode
     end
 
-    if number_of_nodes == 1
+    if number_of_nodes == 1 #create method here
       returned_nodes = "The #{current_node.surname} family"
     else
       returned_nodes = "The #{current_node.surname} family"
@@ -94,7 +91,7 @@ attr_accessor :head, :count
   include_method_answer = ""
 
   until current_node.nextnode == nil
-    if current_node.surname == name_in_question
+    if current_node.surname == name_in_question #pull out method
       include_method_answer = true
     else
       include_method_answer = false
